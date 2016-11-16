@@ -5,6 +5,7 @@ scoreBoard = new ScoreBoard();
 game = new Game();
 var fr = 5;
 var score = 0;
+var myCanvas;
 
 
 
@@ -19,8 +20,7 @@ function setup() {
   snake.stripe2 = color(180, 180, 180);
   frameRate(fr);
   restart();
-  var myCanvas = createCanvas(grid.width, grid.height+100);
-  myCanvas.position((windowWidth/2)-(grid.width/2),0);
+  myCanvas = createCanvas(grid.width, grid.height+100);
   grid.buildGrid();
   food.pickLocation();
 }
@@ -261,6 +261,8 @@ function Grid() {
       if(this.showBorder === true){
         stroke(this.borderColor);
         strokeWeight(this.borderStroke);
+      } else {
+        noStroke
       }
 
       if(this.coordinates[i].isEdge === true){
